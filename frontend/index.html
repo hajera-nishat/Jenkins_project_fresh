@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Registration</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             box-sizing: border-box;
@@ -14,29 +16,52 @@
         }
 
         body {
-            background-color: #f4f7f6;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #333;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #1f2937;
         }
 
         .container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 460px;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 42px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 26px;
         }
 
         h1 {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 24px;
-            color: #1a1a1a;
-            font-weight: 600;
+            font-size: 27px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #6b7280;
         }
 
         .form-group {
@@ -46,93 +71,164 @@
         label {
             display: block;
             margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #555;
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
         }
 
-        input[type="text"],
-        input[type="email"] {
+        input {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 14px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            background: #f9fafb;
+            color: #111827;
             font-size: 14px;
-            transition: all 0.3s ease;
+            outline: none;
+            transition: all 0.25s ease;
         }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus {
-            border-color: #4CAF50;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        input::placeholder {
+            color: #9ca3af;
+        }
+
+        input:focus {
+            background: #ffffff;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
         }
 
         button[type="submit"] {
             width: 100%;
-            padding: 14px;
-            background-color: #4CAF50;
-            color: white;
+            padding: 15px;
+            margin-top: 8px;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-            margin-top: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         button[type="submit"]:hover {
-            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.35);
         }
 
         button[type="submit"]:active {
-            transform: translateY(2px);
+            transform: translateY(0);
+        }
+
+        button[type="submit"]:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
         }
 
         #result {
             margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
             text-align: center;
             font-size: 14px;
-            color: #4CAF50;
             font-weight: 500;
+            min-height: 0;
+        }
+
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 30px 24px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        <h1>Employee Registration</h1>
+
+        <div class="header">
+            <div class="icon">👤</div>
+
+            <h1>Employee Registration</h1>
+
+            <p class="subtitle">
+                Add a new employee to your organization
+            </p>
+        </div>
 
         <form id="employeeForm">
+
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" placeholder="John Doe" required>
+                <label for="name">Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="John Doe"
+                    required
+                >
             </div>
 
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="john@example.com" required>
+                <label for="email">Email Address</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="john@example.com"
+                    required
+                >
             </div>
 
             <div class="form-group">
                 <label for="designation">Designation</label>
-                <input type="text" id="designation" placeholder="Software Engineer" required>
+
+                <input
+                    type="text"
+                    id="designation"
+                    placeholder="Software Engineer"
+                    required
+                >
             </div>
 
-            <button type="submit">Submit Registration</button>
+            <button type="submit">
+                Register Employee
+            </button>
+
         </form>
 
         <h2 id="result"></h2>
+
+        <div class="footer">
+            Employee Management System
+        </div>
+
     </div>
 
     <script>
         document.getElementById("employeeForm")
             .addEventListener("submit", async function(event) {
+
                 event.preventDefault();
-                
-                const submitBtn = event.target.querySelector('button[type="submit"]');
-                submitBtn.innerText = "Submitting...";
+
+                const submitBtn =
+                    event.target.querySelector('button[type="submit"]');
+
+                submitBtn.innerText = "Registering...";
                 submitBtn.disabled = true;
 
                 const data = {
@@ -141,7 +237,11 @@
                     designation: document.getElementById("designation").value
                 };
 
+                const resultElement =
+                    document.getElementById("result");
+
                 try {
+
                     const response = await fetch('/api', {
                         method: 'POST',
                         headers: {
@@ -151,14 +251,24 @@
                     });
 
                     const result = await response.text();
-                    document.getElementById("result").innerHTML = result;
+
+                    resultElement.innerHTML = result;
+                    resultElement.style.color = "#16a34a";
+
                     document.getElementById("employeeForm").reset();
+
                 } catch (error) {
-                    document.getElementById("result").innerHTML = "Error saving employee.";
-                    document.getElementById("result").style.color = "#f44336";
+
+                    resultElement.innerHTML =
+                        "Error saving employee.";
+
+                    resultElement.style.color = "#dc2626";
+
                 } finally {
-                    submitBtn.innerText = "Submit Registration";
+
+                    submitBtn.innerText = "Register Employee";
                     submitBtn.disabled = false;
+
                 }
             });
     </script>
