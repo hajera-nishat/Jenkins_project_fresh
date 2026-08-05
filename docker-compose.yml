@@ -15,7 +15,7 @@ services:
       - app-network
 
   backend:
-    image: awaisxax/cicd-backend:latest
+    image: hajeranishat11/cicd-backend:latest
     build: 
       context: ./backend
     container_name: backend
@@ -27,7 +27,7 @@ services:
       - app-network
 
   frontend:
-    image: awaisxax/cicd-frontend:latest
+    image: hajeranishat11/cicd-frontend:latest
     build: 
       context: ./frontend
     container_name: frontend
